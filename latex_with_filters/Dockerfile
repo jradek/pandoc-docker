@@ -19,8 +19,8 @@ RUN wget -O- "https://github.com/lierdakil/pandoc-crossref/releases/download/"${
         pandoc-secnos \
         pandoc-tablenos \
     # required tex packages
-    && /opt/texlive/texdir/bin/x86_64-linux/tlmgr update --self \
-    && /opt/texlive/texdir/bin/x86_64-linux/tlmgr install cleveref
+    && `which tlmgr` update --self \
+    && `which tlmgr` install cleveref
 
 LABEL maintainer='Jaromir Radek <jradek@yandex.com>'
 LABEL org.pandoc.maintainer='Albert Krewinkel <albert+pandoc@zeitkraut.de>'

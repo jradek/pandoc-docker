@@ -1,8 +1,5 @@
-PANDOC_VERSION ?= 2.8.0.1
-CROSSREF_RELEASE ?= "v0.3.5.0a"
-
-# PANDOC_VERSION ?= 2.9.1.1
-# CROSSREF_RELEASE="v0.3.6.1b"
+PANDOC_VERSION ?= 2.9.1.1
+CROSSREF_RELEASE="v0.3.6.1b"
 
 # substitute dots '.' in version with underscores '_'
 PANDOC_VERSION_UNDER = $(subst .,_,${PANDOC_VERSION})

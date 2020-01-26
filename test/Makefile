@@ -15,7 +15,7 @@ tomhuck: pandoc-eqnos pandoc-fignos pandoc-secnos pandoc-tablenos
 
 .PHONY: run-pandoc-xnos-demos
 run-pandoc-xnos-demos: tomhuck
-	docker run --rm -v "`pwd`:/data" jradek/pandoc-latex-with-filters:2.8.0.1 ./run-pandoc-xnos-demos.sh
+	docker run --rm -v "`pwd`:/data" jradek/pandoc-latex-with-filters:2.9.1.1 ./run-pandoc-xnos-demos.sh
 
 ###############################################################################
 
@@ -27,7 +27,7 @@ lierdakil: pandoc-crossref
 
 .PHONY: run-crossref-demo
 run-crossref-demo: lierdakil
-	docker run --rm -v "`pwd`:/data" jradek/pandoc-latex-with-filters:2.8.0.1 ./run-crossref-demo.sh
+	docker run --rm -v "`pwd`:/data" jradek/pandoc-latex-with-filters:2.9.1.1 ./run-crossref-demo.sh
 
 ###############################################################################
 
