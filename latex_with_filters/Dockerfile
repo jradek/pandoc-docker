@@ -1,16 +1,18 @@
+ARG base_image=
+
+FROM $base_image
+
 ARG pandoc_version
-
-FROM pandoc/latex:${pandoc_version}
-
-ARG pandoc_version_under
 ARG crossref_release
 
-# get crossref
-RUN wget -O- "https://github.com/lierdakil/pandoc-crossref/releases/download/"${crossref_release}"/linux-pandoc_"${pandoc_version_under}".tar.gz" | tar zx -C/usr/bin/ ./pandoc-crossref && \
+# install utils
+RUN apk add xz make \
     # install python
-    apk add make \
         python3 \
         py3-psutil \
+    # get crossref
+    && wget -O- "https://github.com/lierdakil/pandoc-crossref/releases/download/"${crossref_release}"/pandoc-crossref-Linux-"${pandoc_version}".tar.xz" | tar xJ -C /usr/bin/ pandoc-crossref \
+    # install pip
     && python3 -m pip install --upgrade pip \
     # install pandoc-*nos filters
     && pip3 install \

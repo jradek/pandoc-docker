@@ -1,8 +1,6 @@
-PANDOC_VERSION ?= 2.9.1.1
-CROSSREF_RELEASE="v0.3.6.1b"
-
-# substitute dots '.' in version with underscores '_'
-PANDOC_VERSION_UNDER = $(subst .,_,${PANDOC_VERSION})
+# get these version number from https://github.com/lierdakil/pandoc-crossref/releases
+PANDOC_VERSION=2.9.2.1
+CROSSREF_RELEASE="v0.3.6.3"
 
 # Used to specify the build context path for Docker.  Note that we are
 # specifying the repository root so that we can
@@ -29,10 +27,10 @@ show-args:
 latex-with-filters:
 	docker build \
 	    --tag jradek/pandoc-latex-with-filters:$(PANDOC_VERSION) \
+	    --build-arg base_image=pandoc/latex:$(PANDOC_VERSION) \
 	    --build-arg pandoc_version=$(PANDOC_VERSION) \
-	    --build-arg pandoc_version_under=$(PANDOC_VERSION_UNDER) \
 	    --build-arg crossref_release=$(CROSSREF_RELEASE) \
-	    -f $(makefile_dir)/latex_with_filters/Dockerfile $(makefile_dir)
+	    -f $(makefile_dir)latex_with_filters/Dockerfile $(makefile_dir)
 
 all: latex-with-filters
 
